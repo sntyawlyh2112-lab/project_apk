@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f8f1">
+<title>Cahaya Doa</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green:#8b6b55;
+  --dark-green: #634938;
+  --olive: #a58468;
+  --cream: #fbf6ef;
+  --gold: #d8b77a;
+  --text: #40332d;
+  --muted: #9a887c;
+}
+
+body {
+  background: #eee5da;
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  width: 100%;
+  max-width: 440px;
+  height: 100dvh;
+  margin: 0 auto;
+  background: var(--cream);
+  position: relative;
+  padding-bottom: 95px;
+  overflow: hidden;
+  box-shadow: 0 0 40px #26392b0c;
+}
+
+.topbar {
+  padding: 24px 22px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  background: #e7edda;
+  color: var(--green);
+  font-size: 25px;
+}
+
+.brand-name {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  font-weight: bold;
+  letter-spacing: -.5px;
+}
+
+.brand-subtitle {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 3px;
+  letter-spacing: 1.2px;
+}
+
+.profile {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8eddf;
+  border: 1px solid #d9e0d0;
+  color: var(--green);
+  font-size: 20px;
+}
+
+.greeting {
+  padding: 9px 23px 19px;
+}
+
+.date {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #829077;
+  text-transform: uppercase;
+  margin-bottom: 9px;
+}
+
+.greeting h1 {
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -.7px;
+}
+
+.greeting h1 span {
+  color: var(--olive);
+  font-style: italic;
+}
+
+.greeting p {
+  margin-top: 7px;
+  color: #858e80;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.daily-card {
+  position: relative;
+  margin: 0 18px 25px;
+  border-radius: 24px;
+  padding: 17px;
+  color: white;
+  background: linear-gradient(145deg, #e5b94b 0%, #cba23f 20%, #71883d 20%, #526e35 100%);
+  overflow: hidden;
+  min-height: 345px;
+}
+
+.daily-card::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ffffff20;
+  border-radius: 50%;
+  top: 65px;
+  right: -95px;
+}
+
+.daily-card::after {
+  content: "✳";
+  position: absolute;
+  right: 18px;
+  top: 45px;
+  font-size: 95px;
+  color: #ffffff0c;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.card-label {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  color: #fff1bc;
+  text-transform: uppercase;
+}
+
+.card-date {
+  font-size: 10px;
+  color: #f8f0d7;
+  background: #ffffff19;
+  padding: 7px 10px;
+  border-radius: 20px;
+}
+
+.card-heading {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  font-weight: 600;
+  margin-top: 22px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.4;
+}
+
+.arabic {
+  font-size: 29px;
+  text-align: center;
+  line-height: 2;
+  margin: 15px 0 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.translation {
+  text-align: center;
+  color: #f2f2e4;
+  font-size: 12px;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  padding: 0 3px;
+}
+
+.card-divider {
+  height: 1px;
+  background: #ffffff30;
+  margin: 19px 0 13px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.source {
+  font-size: 10px;
+  color: #e7e9d8;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #ffffff55;
+  background: #ffffff17;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+}
+
+.action.favorite.active {
+  background: #fff;
+  color: #496b37;
+}
+
+.section {
+  padding: 0 21px;
+  margin-bottom: 25px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.section-heading h2 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.see-all {
+  border: 0;
+  background: transparent;
+  color: #748746;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.category-card {
+  border: 1px solid #e6e8dc;
+  background: #fff;
+  border-radius: 17px;
+  padding: 14px 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-align: left;
+  min-height: 80px;
+  transition: .2s;
+}
+
+.category-card:active {
+  transform: scale(.97);
+  background: #f0f3e7;
+}
+
+.category-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #edf1e4;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+}
+
+.category-card:nth-child(2) .category-icon {
+  background: #f7edda;
+}
+
+.category-card:nth-child(3) .category-icon {
+  background: #e5eee8;
+}
+
+.category-card:nth-child(4) .category-icon {
+  background: #f1e8dc;
+}
+
+.category-name {
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.category-count {
+  font-size: 10px;
+  color: #92998c;
+  margin-top: 4px;
+}
+
+/* NAVIGASI BAWAH */
+.bottom-nav {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 68px;
+  padding: 9px 8px 12px;
+  background: #fff;
+  border-top: 1px solid #eceee5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: 0 0 32px 32px;
+}
+
+.nav-item {
+  border: 0;
+  background: transparent;
+  color: #a0a79a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 10px;
+}
+
+.nav-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.nav-item.active {
+  color: var(--green);
+  font-weight: 650;
+}
+
+.nav-item.active .nav-icon {
+  background: #e9efdf;
+  width: 37px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+}
+
+.notice {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translate(-50%, 10px);
+  background: #263f2d;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+  z-index: 20;
+  width: max-content;
+  max-width: 90%;
+}
+
+.notice.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+
+@media (min-width: 600px) {
+  body {
+    min-height: 100vh;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app {
+    width: 420px;
+    max-width: calc(100vw - 40px);
+    height: calc(100vh - 32px);
+    min-height: 0;
+    margin: 0 auto;
+    border: 8px solid #252823;
+    border-radius: 42px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 32px 32px;
+  }
+}
+
+/* KARTU DOA */
+.prayer {
+  background: #fff;
+  border: 1px solid #e6e8dc;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px #26392b08;
+  transition: .2s;
+}
+
+.prayer:active {
+  transform: scale(.98);
+  background: #f5f7ef;
+}
+
+.prayer-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.number {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #edf1e4;
+  color: #315b40;
+  font-weight: bold;
+}
+
+.prayer h3 {
+  color: #26392b;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.tag {
+  display: inline-block;
+  background: #f5f0df;
+  color: #788b3c;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+}
+
+.prayer .arabic {
+  color: #23452f;
+  font-size: 30px;
+  line-height: 2;
+  margin: 18px 0 10px;
+  text-align: center;
+}
+
+.latin {
+  color: #64705e;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.meaning {
+  background: #f7f8f1;
+  border-radius: 12px;
+  padding: 12px;
+  color: #596453;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.meaning strong {
+  display: block;
+  color: #315b40;
+  margin-bottom: 4px;
+}
+
+
+/* DESAIN HP CAHAYA DOA */
+@media (min-width: 601px) {
+  body {
+    min-height: 100vh;
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3e7dc;
+  }
+
+  .app {
+    width: 320px;
+    height: calc(100vh - 32px);
+    min-height: 0;
+    padding-bottom: 85px;
+    margin: 0 auto;
+    border: 8px solid #252823;
+    border-radius: 42px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 0 2px #aeb2a7, 0 20px 45px #26392b25;
+    scrollbar-width: none;
+  }
+
+  .app::-webkit-scrollbar {
+    display: none;
+  }
+
+  .app::before {
+    content: "";
+    position: absolute;
+    z-index: 30;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 19px;
+    border-radius: 20px;
+    background: #171916;
+    pointer-events: none;
+  }
+
+  .topbar {
+    padding-top: 34px;
+  }
+
+  .daily-card {
+    min-height: 0;
+    padding: 15px;
+  }
+
+  .daily-card .arabic {
+    font-size: 25px;
+    margin: 10px 0;
+  }
+
+  .card-heading {
+    margin-top: 16px;
+    font-size: 19px;
+  }
+
+  .translation {
+    font-size: 11px;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    height: 76px;
+    padding-bottom: 12px;
+    border-radius: 0 0 32px 32px;
+  }
+}
+
+/* TAMPILAN HP ASLI */
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    background: var(--cream);
+  }
+
+  .app {
+    width: 320px;
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    margin: 0;
+    padding-bottom: 95px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .app::before {
+    display: none;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 440px;
+    padding-bottom: max(15px, env(safe-area-inset-bottom));
+  }
+}
+
+
+/* SELURUH BERANDA MUAT DALAM SATU LAYAR */
+@media (min-width: 601px) {
+  .app {
+    height: min(780px, calc(100vh - 48px));
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 0px;
+  }
+
+  .page-content {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 90px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-content::webkit-scrolbar {
+    display: none;
+  }
+
+  .app > .bottom-nav {
+    position: absolute;
+    z-index: 50;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 68px;
+    margin: 0;
+    transform: none;
+    flex-shrink: 0;
+}
+
+  .topbar {
+    flex-shrink: 0;
+    padding: 24px 18px 10px;
+  }
+
+  .greeting {
+    flex-shrink: 0;
+    padding: 5px 20px 12px;
+  }
+
+  .greeting h1 {
+    font-size: 23px;
+  }
+
+  .greeting p {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  .daily-card {
+    flex: 1;
+    min-height: 0;
+    margin: 0 15px 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-heading {
+    margin-top: 12px;
+    font-size: 18px;
+  }
+
+  .daily-card .arabic {
+    font-size: 25px;
+    margin: 8px 0;
+  }
+
+  .translation {
+    font-size: 11px;
+  }
+
+  .card-divider {
+    margin: 10px 0;
+  }
+
+  .section {
+    flex-shrink: 0;
+    margin-bottom: 12px;
+    padding: 0 15px;
+  }
+
+  .section-heading {
+    margin-bottom: 9px;
+  }
+
+  .section-heading h2 {
+    font-size: 18px;
+  }
+
+  .category-card {
+    min-height: 62px;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .category-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+  }
+
+  .category-name {
+    font-size: 10px;
+  }
+
+  .category-count {
+    font-size: 9px;
+  }
+
+  .bottom-nav {
+    flex-shrink: 0;
+    height: 68px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+<div class="app">
+    <main class="page-content">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">☾</div>
+      <div>
+        <div class="brand-name">Cahaya Doa</div>
+        <div class="brand-subtitle">RUANG DOA HARIAN</div>
+      </div>
+    </div>
+    <button class="profile" id="profileButton" aria-label="Profil">♙</button>
+  </header>
+
+  <section class="greeting">
+    <div class="date" id="today">ASSALAMUALAIKUM</div>
+    <h1>Semoga harimu<br><span>penuh berkah.</span></h1>
+    <p>Awali setiap langkah dengan mengingat Allah.</p>
+  </section>
+
+  <section class="daily-card">
+    <div class="card-top">
+      <div class="card-label">✦ DOA PILIHAN HARI INI</div>
+      <div class="card-date">Doa harian</div>
+    </div>
+    <h2 class="card-heading">Doa Memohon Ilmu</h2>
+    <div class="arabic" lang="ar" dir="rtl">رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا بِرَحْمَتِكَ يَا أَرْحَمَ الرَّاحِمِينَ</div>
+    <p class="translation">
+      Rabbi zidnii 'ilman, warzuqnii fahman, birahmatika yaa arhamar raahimiin.<br>
+      “Ya Tuhanku, tambahkanlah ilmu kepadaku, berilah aku pemahaman, dengan rahmat-Mu, wahai Yang Maha Penyayang di antara para penyayang.”
+    </p>
+    <div class="card-divider"></div>
+    <div class="card-bottom">
+      <div class="source">QS. Taha: 114</div>
+      <div class="card-actions">
+        <button class="action" id="playButton" aria-label="Bacakan doa">▶</button>
+        <button class="action favorite" id="favoriteButton" aria-label="Simpan favorit">♡</button>
+        <button class="action" id="shareButton" aria-label="Bagikan doa">↗</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <h2>Jelajahi Doa</h2>
+      <button class="see-all" id="exploreButton">Lihat semua ↗</button>
+    </div>
+    <div class="category-grid">
+      <button class="category-card" data-name="Doa Setelah Salat">
+        <div class="category-icon">☪</div>
+        <div><div class="category-name">Setelah Salat</div><div class="category-count">Doa & zikir</div></div>
+      </button>
+      <button class="category-card" data-name="Doa Sebelum Tidur">
+        <div class="category-icon">☾</div>
+        <div><div class="category-name">Sebelum Tidur</div><div class="category-count">Doa istirahat</div></div>
+      </button>
+      <button class="category-card" data-name="Doa Aktivitas Harian">
+        <div class="category-icon">✿</div>
+        <div><div class="category-name">Doa Harian</div><div class="category-count">Dalam aktivitas</div></div>
+      </button>
+      <button class="category-card" data-name="Doa untuk Keluarga">
+        <div class="category-icon">♡</div>
+        <div><div class="category-name">Doa Keluarga</div><div class="category-count">Untuk orang tercinta</div></div>
+      </button>
+    </div>
+  </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-page="Home"><span class="nav-icon">⌂</span><span>Home</span></button>
+    <button class="nav-item" data-page="Explore"><span class="nav-icon">▤</span><span>Explore</span></button>
+    <button class="nav-item" data-page="Zikir"><span class="nav-icon">◉</span><span>Zikir</span></button>
+    <button class="nav-item" data-page="Profil"><span class="nav-icon">♙</span><span>Profil</span></button>
+  </nav>
+
+</div>
+
+<div class="notice" id="notice" role="status"></div>
+
+<script>
+const notice = document.getElementById("notice");
+let noticeTimeout;
+
+function showNotice(message) {
+  notice.textContent = message;
+  notice.classList.add("show");
+  clearTimeout(noticeTimeout);
+  noticeTimeout = setTimeout(() => {
+    notice.classList.remove("show");
+  }, 2200);
+}
+
+// Tanggal hari ini
+const now = new Date();
+document.getElementById("today").textContent =
+  "ASSALAMUALAIKUM • " +
+  new Intl.DateTimeFormat("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(now);
+
+// Favorit
+const favoriteButton = document.getElementById("favoriteButton");
+favoriteButton.addEventListener("click", () => {
+  const active = favoriteButton.classList.toggle("active");
+  favoriteButton.textContent = active ? "♥" : "♡";
+  showNotice(active ? "Doa ditambahkan ke favorit" : "Doa dihapus dari favorit");
+});
+
+// Bacakan doa
+document.getElementById("playButton").addEventListener("click", () => {
+  if (!("speechSynthesis" in window)) {
+    showNotice("Fitur suara belum tersedia di browser ini");
+    return;
+  }
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    showNotice("Bacaan dihentikan");
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance(
+    "Rabbi zidnii ilma. Ya Tuhanku, tambahkanlah ilmu kepadaku."
+  );
+  utterance.lang = "id-ID";
+  utterance.rate = 0.85;
+  window.speechSynthesis.speak(utterance);
+  showNotice("Membacakan arti doa");
+});
+
+// Bagikan doa
+document.getElementById("shareButton").addEventListener("click", async () => {
+  const text = "Doa Memohon Ilmu\nRabbi zidnii 'ilmaa.\nYa Tuhanku, tambahkanlah ilmu kepadaku. (QS. Taha: 114)";
+  try {
+    if (navigator.share) {
+      await navigator.share({ title: "Cahaya Doa", text });
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+      showNotice("Doa berhasil disalin");
+    } else {
+      showNotice("Fitur berbagi belum tersedia");
+    }
+  } catch (error) {
+    if (error.name !== "AbortError") showNotice("Belum dapat membagikan doa");
+  }
+});
+
+const explorePrayers = [
+  {
+    title: "Doa Sebelum Makan",
+    category: "Aktivitas Harian",
+    arabic: "بِسْمِ اللَّهِ",
+    latin: "Bismillah.",
+    meaning: "Dengan nama Allah."
+  },
+  {
+    title: "Doa Sesudah Makan",
+    category: "Aktivitas Harian",
+    arabic: "الْحَمْدُ لِلَّهِ",
+    latin: "Alhamdulillah.",
+    meaning: "Segala puji bagi Allah."
+  },
+  {
+    title: "Doa Sebelum Tidur",
+    category: "Istirahat",
+    arabic: "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+    latin: "Bismika Allahumma amuutu wa ahyaa.",
+    meaning: "Dengan nama-Mu, ya Allah, aku mati dan aku hidup."
+  },
+  {
+    title: "Doa Bangun Tidur",
+    category: "Istirahat",
+    arabic: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+    latin: "Alhamdu lillahil-ladzi ahyaanaa ba'da maa amaatanaa wa ilaihin-nusyuur.",
+    meaning: "Segala puji bagi Allah yang menghidupkan kami setelah mematikan kami, dan kepada-Nya kami dibangkitkan."
+  },
+  {
+    title: "Doa Memohon Ilmu",
+    category: "Ibadah",
+    arabic: "رَبِّ زِدْنِي عِلْمًا",
+    latin: "Rabbi zidnii 'ilmaa.",
+    meaning: "Ya Tuhanku, tambahkanlah ilmu kepadaku."
+  },
+  {
+    title: "Istigfar Setelah Salat",
+    category: "Doa Setelah Salat",
+    arabic: "أَسْتَغْفِرُ اللَّهَ",
+    latin: "Astaghfirullah.",
+    meaning: "Aku memohon ampun kepada Allah."
+  },
+  {
+    title: "Zikir Tasbih",
+    category: "Doa Setelah Salat",
+    arabic: "سُبْحَانَ اللَّهِ",
+    latin: "Subhanallah.",
+    meaning: "Mahasuci Allah."
+  },
+  {
+    title: "Zikir Tahmid",
+    category: "Doa Setelah Salat",
+    arabic: "الْحَمْدُ لِلَّهِ",
+    latin: "Alhamdulillah.",
+    meaning: "Segala puji bagi Allah."
+  },
+  {
+    title: "Zikir Takbir",
+    category: "Doa Setelah Salat",
+    arabic: "اللَّهُ أَكْبَرُ",
+    latin: "Allahu akbar.",
+    meaning: "Allah Mahabesar."
+  },
+  {
+    title: "Doa Keluar Rumah",
+    category: "Aktivitas Harian",
+    arabic: "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ",
+    latin: "Bismillaahi tawakkaltu 'alallaah.",
+    meaning: "Dengan nama Allah, aku bertawakal kepada Allah."
+  }
+];
+
+// Membuat navigasi dengan ikon untuk semua halaman
+function navMarkup(activePage) {
+  return `
+    <nav class="bottom-nav">
+      <button class="nav-item ${activePage === "Home" ? "active" : ""}" data-page="Home">
+        <span class="nav-icon">⌂</span><span>Home</span>
+      </button>
+      <button class="nav-item ${activePage === "Explore" ? "active" : ""}" data-page="Explore">
+        <span class="nav-icon">▤</span><span>Explore</span>
+      </button>
+      <button class="nav-item ${activePage === "Zikir" ? "active" : ""}" data-page="Zikir">
+        <span class="nav-icon">◉</span><span>Zikir</span>
+      </button>
+      <button class="nav-item ${activePage === "Profil" ? "active" : ""}" data-page="Profil">
+        <span class="nav-icon">♙</span><span>Profil</span>
+      </button>
+    </nav>`;
+}
+
+function openProfil() {
+    document.querySelector(".app").innerHTML = `
+        <style>
+            .profil-page {
+                width: 100%;
+                height: 100%;
+                min-height: 0;
+                overflow-y: auto;
+                overflow-x: hidden;
+                margin: auto;
+                padding: 25px 20px 100px;
+                background: #fffaf7;
+                color: #493b35;
+                font-family: Arial, sans-serif;
+            }
+
+            .profil-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 25px;
+            }
+
+            .profil-header button {
+                border: none;
+                background: #f3e6df;
+                padding: 10px 14px;
+                border-radius: 12px;
+                cursor: pointer;
+            }
+
+            .profil-card {
+                text-align: center;
+                padding: 28px 20px;
+                border-radius: 24px;
+                background: #f5e8e0;
+            }
+
+            .profil-avatar {
+                width: 85px;
+                height: 85px;
+                border-radius: 50%;
+                background: #fffaf7;
+                display: grid;
+                place-items: center;
+                font-size: 38px;
+                margin: 0 auto 15px;
+            }
+
+            .profil-card h2 {
+                margin: 8px 0;
+            }
+
+            .profil-card p {
+                color: #806d63;
+                font-size: 14px;
+            }
+
+            .profil-form {
+                margin-top: 22px;
+                padding: 20px;
+                background: white;
+                border-radius: 20px;
+            }
+
+            .profil-form label {
+                display: block;
+                margin: 14px 0 7px;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .profil-form input,
+            .profil-form textarea {
+                box-sizing: border-box;
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #e8d9d0;
+                border-radius: 12px;
+                font: inherit;
+                background: #fffdfb;
+            }
+
+            .profil-form textarea {
+                min-height: 85px;
+                resize: vertical;
+            }
+
+            .profil-save {
+                width: 100%;
+                margin-top: 18px;
+                padding: 14px;
+                border: none;
+                border-radius: 14px;
+                background: #947568;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .profil-info {
+                margin-top: 20px;
+                padding: 20px;
+                background: white;
+                border-radius: 20px;
+                line-height: 1.6;
+            }
+
+</style>
+
+        <main class="profil-page">
+            <header class="profil-header">
+                <button id="profilBack">← Kembali</button>
+                <h2>Profil Saya</h2>
+            </header>
+
+            <section class="profil-card">
+                <div class="profil-avatar">☪</div>
+                <h2 id="profilNamaTampil">Sahabat Cahaya Doa</h2>
+                <p id="profilBioTampil">
+                    Terus belajar dan mendekatkan diri kepada Allah.
+                </p>
+            </section>
+
+            <section class="profil-form">
+                <h3>Edit Profil</h3>
+
+                <label for="profilNama">Nama</label>
+                <input id="profilNama"
+                    type="text"
+                    placeholder="Masukkan nama kamu">
+
+                <label for="profilBio">Tentang Saya</label>
+                <textarea id="profilBio"
+                    placeholder="Tuliskan deskripsi singkat"></textarea>
+
+                <button class="profil-save" id="profilSimpan">
+                    Simpan Profil
+                </button>
+            </section>
+
+            <section class="profil-info">
+                <h3>Tentang Cahaya Doa</h3>
+                <p>
+                    Cahaya Doa adalah website yang membantu kamu
+                    menemukan doa sehari-hari dan zikir agar bisa
+                    membiasakan diri beribadah setiap hari.
+                </p>
+                <p>Semoga setiap doa membawa kebaikan dan ketenangan.</p>
+            </section>
+
+        </main>
+
+            ${navMarkup("Profil")}
+    `;
+
+    const namaInput = document.getElementById("profilNama");
+    const bioInput = document.getElementById("profilBio");
+    const namaTampil = document.getElementById("profilNamaTampil");
+    const bioTampil = document.getElementById("profilBioTampil");
+
+    let namaTersimpan = "";
+    let bioTersimpan = "";
+
+    try {
+        namaTersimpan = localStorage.getItem("cahayaNama") || "";
+        bioTersimpan = localStorage.getItem("cahayaBio") || "";
+    } catch (error) {}
+
+    namaInput.value = namaTersimpan;
+    bioInput.value = bioTersimpan;
+
+    namaTampil.textContent = namaTersimpan || "Sahabat Cahaya Doa";
+    bioTampil.textContent = bioTersimpan ||
+        "Terus belajar dan mendekatkan diri kepada Allah.";
+
+    document.getElementById("profilSimpan").onclick = function () {
+        const nama = namaInput.value.trim();
+        const bio = bioInput.value.trim();
+
+        try {
+            localStorage.setItem("cahayaNama", nama);
+            localStorage.setItem("cahayaBio", bio);
+        } catch (error) {}
+
+        namaTampil.textContent = nama || "Sahabat Cahaya Doa";
+        bioTampil.textContent = bio ||
+            "Terus belajar dan mendekatkan diri kepada Allah.";
+
+        alert("Profil berhasil disimpan!");
+    };
+
+    document.getElementById("profilBack").onclick = function () {
+        location.reload();
+    };
+
+    setupNavigation();
+}
+function setupNavigation() {
+  document.querySelectorAll(".nav-item").forEach(button => {
+    button.addEventListener("click", () => {
+      const page = button.dataset.page;
+      if (page === "Home") {
+        location.reload();
+      } else if (page === "Explore") {
+        openExplore();
+      } else if (page === "Zikir") {
+        openZikir();
+      } else if (page === "Profil") {
+        openProfil();
+      }
+    });
+  });
+}
+
+// Menampilkan daftar doa
+function renderExplore() {
+  const search = document.getElementById("exploreSearch");
+  if (!search) return;
+
+  const keyword = search.value.toLowerCase();
+  const filtered = explorePrayers.filter(prayer =>
+    (prayer.title + " " + prayer.category).toLowerCase().includes(keyword)
+  );
+
+  document.getElementById("exploreList").innerHTML = filtered.map((prayer, index) => `
+    <article class="prayer" style="cursor:pointer" data-prayer-index="${explorePrayers.indexOf(prayer)}">
+      <div class="prayer-top">
+        <div class="number">${index + 1}</div>
+        <div>
+          <h3>${prayer.title}</h3>
+          <div class="tag">${prayer.category}</div>
+        </div>
+        <span style="margin-left:auto;color:#788b3c">›</span>
+      </div>
+      <div class="arabic" lang="ar" dir="rtl">${prayer.arabic}</div>
+      <div class="latin">${prayer.latin}</div>
+      <div class="meaning"><strong>Artinya</strong>${prayer.meaning}</div>
+    </article>
+  `).join("");
+
+  document.getElementById("noResults").style.display =
+    filtered.length ? "none" : "block";
+
+  document.querySelectorAll("[data-prayer-index]").forEach(card => {
+    card.addEventListener("click", () => {
+      const prayer = explorePrayers[Number(card.dataset.prayerIndex)];
+      alert(
+        prayer.title + "\n\n" +
+        prayer.arabic + "\n\n" +
+        prayer.latin + "\n\n" +
+        "Artinya: " + prayer.meaning
+      );
+    });
+  });
+}
+
+function openExplore() {
+  const app = document.querySelector(".app");
+  app.innerHTML = `
+    <main class="page-content">
+    <header class="topbar">
+      <button id="backHome" aria-label="Kembali ke Home"
+        style="border:0;background:none;font-size:25px;color:#315b40">←</button>
+      <div class="brand-name">Jelajahi Doa</div>
+      <div style="width:35px"></div>
+    </header>
+
+    <section class="greeting">
+      <div class="date">TEMUKAN KETENANGAN</div>
+      <h1>Doa untuk setiap<br><span>langkah hidupmu.</span></h1>
+      <p>Pilih dan baca doa sehari-hari di sini.</p>
+    </section>
+
+    <section class="section">
+      <input id="exploreSearch" placeholder="Cari nama doa..."
+        style="width:100%;padding:15px;border:1px solid #e1e5d9;border-radius:14px;margin-bottom:20px;font-size:14px">
+      <div id="exploreList"></div>
+      <p id="noResults" style="display:none;text-align:center;padding:20px;color:#888">
+        Doa tidak ditemukan.
+      </p>
+    </section>
+    </main>
+
+    ${navMarkup("Explore")}
+  `;
+
+  document.getElementById("exploreSearch").addEventListener("input", renderExplore);
+  document.getElementById("backHome").addEventListener("click", () => location.reload());
+
+  renderExplore();
+  setupNavigation();
+}
+
+function openZikir() {
+  const app = document.querySelector(".app");
+  app.innerHTML = `
+    <main class="page-content">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">☾</div>
+        <div>
+          <div class="brand-name">Cahaya Doa</div>
+          <div class="brand-subtitle">RUANG DOA HARIAN</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="greeting">
+      <div class="date">ZIKIR HARIAN</div>
+      <h1>Tenangkan hati<br><span>dengan berzikir.</span></h1>
+      <p>Luangkan waktu untuk mengingat Allah.</p>
+    </section>
+
+    <section class="section">
+      <article class="prayer">
+        <h3>Istighfar</h3>
+        <div class="arabic" lang="ar" dir="rtl">أَسْتَغْفِرُ اللَّهَ</div>
+        <div class="latin">Astaghfirullah.</div>
+        <div class="meaning"><strong>Artinya</strong>Aku memohon ampun kepada Allah.</div>
+      </article>
+
+      <article class="prayer">
+        <h3>Tasbih</h3>
+        <div class="arabic" lang="ar" dir="rtl">سُبْحَانَ اللَّهِ</div>
+        <div class="latin">Subhanallah.</div>
+        <div class="meaning"><strong>Artinya</strong>Mahasuci Allah.</div>
+      </article>
+
+      <article class="prayer">
+        <h3>Tahmid</h3>
+        <div class="arabic" lang="ar" dir="rtl">الْحَمْدُ لِلَّهِ</div>
+        <div class="latin">Alhamdulillah.</div>
+        <div class="meaning"><strong>Artinya</strong>Segala puji bagi Allah.</div>
+      </article>
+    </section>
+
+    </main>
+
+    ${navMarkup("Zikir")}
+  `;
+
+  setupNavigation();
+}
+
+// Tombol Profil di bagian atas Home
+document.getElementById("profileButton").addEventListener("click", openProfil);
+
+// Tombol Lihat Semua
+document.getElementById("exploreButton").addEventListener("click", openExplore);
+
+document.querySelectorAll(".category-card").forEach(button => {
+  button.addEventListener("click", () => {
+    const kategori = button.dataset.name;
+
+    openExplore();
+
+    const search = document.getElementById("exploreSearch");
+
+    if (kategori === "Doa Setelah Salat") {
+      search.value = "Doa & zikir setelah salat";
+    } else if (kategori === "Doa Sebelum Tidur") {
+      search.value = "Doa Sebelum Tidur";
+    } else if (kategori === "Doa Aktivitas Harian") {
+      search.value = "Doa Aktivitas Harian";
+    } else if (kategori === "Doa Untuk Keluarga") {
+      search.value = "Doa Untuk Keluarga";
+    }
+
+    renderExplore();
+  });
+});
+
+// Navigasi bawah
+setupNavigation();
+
+</script>
+
+</body>
+</html>
