@@ -1,0 +1,2402 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eef4ec">
+<title>SANAPUZESHA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green:#5b3a50;
+  --dark-green: #47293d;
+  --olive: #7d5a6e;
+  --cream: #eef4ec;
+  --gold: #a8c4a0;
+  --text: #5b3a50;
+  --muted: #9a8296;
+  --card: #ffffff;
+  --stroke: #d5e3d1;
+  --soft: #e3efe0;
+  --plum-soft: #efe6ec;
+}
+
+body {
+  background:
+    radial-gradient(1200px 500px at 50% -10%, #e6efe2 0%, transparent 60%),
+    radial-gradient(900px 400px at 110% 110%, #e9e0e6 0%, transparent 55%),
+    #d8e5d4;
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.font-serif {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.arabic, [lang="ar"] {
+  font-family: "Amiri", "Traditional Arabic", Georgia, serif;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  width: 100%;
+  max-width: 440px;
+  height: 100dvh;
+  margin: 0 auto;
+  background:
+    radial-gradient(600px 260px at 100% 0%, #e9e0e655 0%, transparent 70%),
+    radial-gradient(500px 240px at 0% 18%, #dfeadcaa 0%, transparent 70%),
+    var(--cream);
+  position: relative;
+  padding-bottom: 95px;
+  overflow: hidden;
+  box-shadow: 0 0 40px #5b3a500c;
+}
+
+.topbar {
+  padding: 28px 24px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #5b3a50, #7d5a6e);
+  color: #f3eaf0;
+  font-size: 22px;
+  box-shadow: 0 6px 18px #5b3a5033, inset 0 1px 0 #ffffff30;
+}
+
+.brand-name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: #5b3a50;
+}
+
+.brand-subtitle {
+  color: var(--muted);
+  font-size: 8.5px;
+  margin-top: 2px;
+  letter-spacing: 2.4px;
+  font-weight: 500;
+}
+
+.profile {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid var(--stroke);
+  color: var(--green);
+  font-size: 18px;
+  box-shadow: 0 3px 12px #5b3a500a;
+  transition: .2s;
+}
+
+.profile:active {
+  transform: scale(.93);
+}
+
+.greeting {
+  padding: 16px 24px 20px;
+  position: relative;
+}
+
+.date {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9.5px;
+  letter-spacing: 2.4px;
+  color: var(--olive);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.date::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.greeting h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.5px;
+  color: #5b3a50;
+}
+
+.greeting h1 span {
+  color: var(--olive);
+  font-style: italic;
+}
+
+.greeting p {
+  margin-top: 9px;
+  color: #9a8296;
+  font-size: 12px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.doa-count {
+  margin-top: 14px;
+  padding: 11px 14px;
+  background: linear-gradient(135deg, #f8f3ff, #f1e8ff);
+  color: #7652a8;
+  border: 1px solid #e8dcf8;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+
+.count-icon {
+  color: #9b76cf;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.back-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e3efe0;
+  border-radius: 15px;
+  background: #ffffff;
+  color: #5b3a50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: .2s;
+}
+
+.back-button svg {
+  width: 21px;
+  height: 21px;
+}
+
+.back-button:active {
+  transform: scale(.94);
+  background: #f1e8f4;
+}
+
+
+/* PILIHAN ZIKIR PREMIUM */
+.zikir-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.zikir-choice {
+  width: 100%;
+  text-align: left;
+  padding: 17px;
+  border: 1px solid #d5e3d1;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ffffff, #f8fbf7);
+  box-shadow: 0 4px 16px #5b3a5008;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: .2s;
+}
+
+.zikir-choice.active {
+  border: 1px solid #7d5a6e;
+  background: linear-gradient(145deg, #efe6ec, #f8fbf7);
+  box-shadow: 0 5px 18px #5b3a5012;
+}
+
+.zikir-choice:active {
+  transform: scale(.97);
+}
+
+.zikir-choice-name {
+  color: #5b3a50;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.zikir-choice-arab {
+  color: #47293d;
+  font-family: "Amiri", serif;
+  font-size: 25px;
+  text-align: right;
+  line-height: 1.9;
+}
+
+.zikir-choice-meaning {
+  color: #9a8296;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.zikir-main-arab {
+  font-family: "Amiri", serif;
+  font-size: 34px;
+  line-height: 2;
+  color: #47293d;
+  margin: 18px 0 10px;
+}
+
+.back-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e3efe0;
+  border-radius: 15px;
+  background: #ffffff;
+  color: #5b3a50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: .2s;
+}
+
+.back-button svg {
+  width: 21px;
+  height: 21px;
+}
+
+.back-button:active {
+  transform: scale(.94);
+  background: #f1e8f4;
+}
+
+/* HEADER SANAPUZESHA */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 17px;
+  background: #6f4965;
+  color: #f8f3fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 14px rgba(80, 45, 75, 0.12);
+  flex-shrink: 0;
+}
+
+.logo svg {
+  width: 23px;
+  height: 23px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  font-family: Georgia, serif;
+  color: #5b3a50;
+}
+
+.brand-subtitle {
+  font-size: 9px;
+  letter-spacing: 2.3px;
+  color: #8c7185;
+  margin-top: 3px;
+}
+
+.profile-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #dce8d7;
+  background: #ffffff;
+  color: #6f4965;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.profile-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.profile-button:active {
+  transform: scale(.94);
+}
+
+/* PROFIL SANAPUZESHA PREMIUM */
+
+.profile-page {
+  padding-bottom: 20px;
+}
+
+.profile-hero {
+  text-align: center;
+  padding: 28px 20px;
+  margin-bottom: 26px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #fdfcff, #f0e8f3);
+  border: 1px solid #e8dce9;
+  box-shadow: 0 8px 25px #5b3a5008;
+}
+
+.profile-logo {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #5b3a50, #896b82);
+  color: #ffffff;
+  font-size: 46px;
+  box-shadow: 0 10px 25px #5b3a5025;
+}
+
+.profile-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  font-weight: 700;
+  color: #5b3a50;
+  letter-spacing: 1px;
+}
+
+.profile-tagline {
+  margin-top: 5px;
+  color: #987b91;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.profile-description {
+  color: #8e7889;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 18px;
+}
+
+.profile-section-title {
+  color: #5b3a50;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 14px 4px;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 16px;
+  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid #e4eadd;
+  box-shadow: 0 5px 18px #5b3a5008;
+}
+
+.profile-menu-icon {
+  min-width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #f1e8f4;
+  color: #7d5a6e;
+  font-size: 20px;
+}
+
+.profile-menu-content h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5b3a50;
+  margin: 2px 0 7px;
+}
+
+.profile-menu-content p {
+  color: #998798;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.profile-footer {
+  text-align: center;
+  padding: 28px 10px 12px;
+}
+
+.profile-footer-name {
+  color: #7d5a6e;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.profile-footer p {
+  color: #9a8296;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.profile-footer span {
+  color: #b4a2b3;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* BANNER MASJID */
+.mosque-banner {
+  margin: 0 20px 24px;
+  padding: 14px 16px 6px;
+  background:
+    radial-gradient(240px 90px at 80% 0%, #efe6ec88 0%, transparent 70%),
+    linear-gradient(165deg, #f7fbf6 0%, #eef4ec 100%);
+  border: 1px solid #d5e3d1;
+  border-radius: 26px;
+  box-shadow: 0 8px 26px #5b3a500e;
+  overflow: hidden;
+  position: relative;
+}
+
+.mosque-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #7d5a6e, #a8c4a0, #7d5a6e);
+  opacity: .7;
+}
+
+.mosque-banner svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* KARTU DOA HARIAN */
+.daily-card {
+  position: relative;
+  margin: 2px 20px 30px;
+  border-radius: 26px;
+  padding: 26px 22px 20px;
+  color: var(--text);
+  background:
+    radial-gradient(220px 140px at 110% -10%, #5b3a5014 0%, transparent 70%),
+    radial-gradient(200px 140px at -10% 110%, #a8c4a030 0%, transparent 70%),
+    linear-gradient(165deg, #ffffff 0%, #f6faf4 100%);
+  border: 1px solid #d5e3d1;
+  box-shadow: 0 10px 32px #5b3a5012, 0 1px 0 #ffffffaa inset;
+  overflow: hidden;
+}
+
+.daily-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #7d5a6e, #a8c4a0, #7d5a6e);
+  opacity: .7;
+}
+
+.daily-card::after {
+  content: "﷽";
+  position: absolute;
+  right: -12px;
+  bottom: -18px;
+  font-size: 90px;
+  font-family: "Amiri", serif;
+  color: #5b3a500a;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.card-label {
+  font-size: 8.5px;
+  letter-spacing: 2.2px;
+  color: #7d5a6e;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.card-date {
+  font-size: 9px;
+  letter-spacing: .5px;
+  color: #7d5a6e;
+  background: #e3efe0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.card-heading {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.3;
+  color: #5b3a50;
+}
+
+.daily-card .arabic {
+  font-family: "Amiri", serif;
+  font-size: 32px;
+  text-align: center;
+  line-height: 2.2;
+  margin: 20px 0 14px;
+  position: relative;
+  z-index: 1;
+  color: #47293d;
+}
+
+.translation {
+  text-align: center;
+  color: #8a7290;
+  font-size: 12px;
+  line-height: 1.85;
+  position: relative;
+  z-index: 1;
+  padding: 0 4px;
+  font-weight: 300;
+}
+
+.card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d5e3d1, transparent);
+  margin: 22px 0 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.source {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #9a8296;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #d5e3d1;
+  background: #fff;
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  transition: .18s;
+  box-shadow: 0 2px 8px #5b3a500a;
+}
+
+.action:active {
+  transform: scale(.88);
+}
+
+.action.favorite.active {
+  background: linear-gradient(145deg, #5b3a50, #7d5a6e);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px #5b3a5040;
+}
+
+.section {
+  padding: 0 22px;
+  margin-bottom: 28px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.section-heading h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #5b3a50;
+}
+
+.see-all {
+  border: 0;
+  background: transparent;
+  color: #7d5a6e;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  padding: 6px 2px;
+}
+
+.see-all:active {
+  opacity: .6;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.category-card {
+  border: 1px solid #d5e3d1;
+  background: linear-gradient(160deg, #ffffff 0%, #f7fbf6 100%);
+  border-radius: 20px;
+  padding: 16px 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  min-height: 80px;
+  transition: .2s;
+  box-shadow: 0 4px 16px #5b3a5008;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #a8c4a022;
+  top: -28px;
+  right: -22px;
+  pointer-events: none;
+}
+
+.category-card:active {
+  transform: scale(.96);
+  box-shadow: 0 2px 8px #5b3a500a;
+}
+
+.category-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #e3efe0, #d9e8d5);
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  color: #5b3a50;
+  box-shadow: inset 0 1px 0 #ffffff80;
+}
+
+.category-card:nth-child(2) .category-icon {
+  background: linear-gradient(145deg, #efe6ec, #e5d9e1);
+}
+
+.category-card:nth-child(3) .category-icon {
+  background: linear-gradient(145deg, #e9f0e4, #dcead6);
+}
+
+.category-card:nth-child(4) .category-icon {
+  background: linear-gradient(145deg, #f0ebe4, #e8dfd5);
+}
+
+.category-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #5b3a50;
+}
+
+.category-count {
+  font-size: 10px;
+  color: #9a8296;
+  margin-top: 3px;
+  font-weight: 300;
+}
+
+/* NAVIGASI BAWAH */
+.bottom-nav {
+  position: absolute;
+  z-index: 10;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 408px;
+  height: 64px;
+  padding: 6px;
+  background: #ffffffee;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid #d5e3d1;
+  border-radius: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  box-shadow: 0 10px 30px #5b3a501a, 0 1px 0 #ffffffcc inset;
+}
+
+.nav-item {
+  border: 0;
+  background: transparent;
+  color: #b3a3ba;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 9.5px;
+  font-weight: 500;
+  border-radius: 18px;
+  transition: .18s;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 5px;
+  transition: all .25s ease;
+}
+
+.nav-icon svg {
+  width: 23px;
+  height: 23px;
+  display: block;
+}
+
+.nav-item.active .nav-icon {
+  transform: translateY(-1px);
+}
+
+.nav-item.active {
+  color: #5b3a50;
+  font-weight: 600;
+  background: linear-gradient(145deg, #e3efe0, #efe6ec);
+}
+
+.nav-item.active .nav-icon {
+  transform: translateY(-1px);
+}
+
+.notice {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translate(-50%, 10px);
+  background: #5b3a50;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+  z-index: 20;
+  width: max-content;
+  max-width: 90%;
+}
+
+.notice.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Animasi */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.topbar,
+.greeting,
+.mosque-banner,
+.daily-card,
+.section,
+.prayer,
+.tasbih-card {
+  animation: fadeUp .55s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.greeting { animation-delay: .05s; }
+.mosque-banner { animation-delay: .1s; }
+.daily-card { animation-delay: .17s; }
+.section { animation-delay: .24s; }
+
+@media (min-width: 600px) {
+  body {
+    min-height: 100vh;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app {
+    width: 420px;
+    max-width: calc(100vw - 40px);
+    height: calc(100vh - 32px);
+    min-height: 0;
+    margin: 0 auto;
+    border: 8px solid #252823;
+    border-radius: 42px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    margin: 0 auto;
+  }
+}
+
+/* KARTU DOA */
+.arabic {
+  font-size: 29px;
+  text-align: center;
+  line-height: 2;
+  margin: 15px 0 10px;
+}
+
+.prayer {
+  background: linear-gradient(165deg, #ffffff 0%, #f8fbf7 100%);
+  border: 1px solid #d5e3d1;
+  border-radius: 22px;
+  padding: 22px 18px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 18px #5b3a5008;
+  transition: .2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.prayer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #a8c4a0, #7d5a6e);
+  opacity: .55;
+}
+
+.prayer:active {
+  transform: scale(.985);
+  box-shadow: 0 2px 10px #5b3a500a;
+}
+
+.prayer-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.number {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #e3efe0, #efe6ec);
+  color: #5b3a50;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.prayer h3 {
+  color: #5b3a50;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.tag {
+  display: inline-block;
+  background: #e3efe0;
+  color: #7d5a6e;
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 9.5px;
+  letter-spacing: .4px;
+  font-weight: 500;
+}
+
+.prayer .arabic {
+  font-family: "Amiri", serif;
+  color: #47293d;
+  font-size: 30px;
+  line-height: 2.2;
+  margin: 18px 0 10px;
+  text-align: center;
+}
+
+.latin {
+  color: #8a7290;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.meaning {
+  background: linear-gradient(145deg, #f3f8f2, #efe6ec66);
+  border-radius: 16px;
+  padding: 14px;
+  color: #7d5a6e;
+  font-size: 12px;
+  line-height: 1.75;
+  border: 1px solid #d5e3d180;
+}
+
+.meaning strong {
+  display: block;
+  color: #5b3a50;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.speak-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #d5e3d1;
+  background: #fff;
+  color: #7d5a6e;
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  transition: .18s;
+  box-shadow: 0 2px 8px #5b3a500a;
+}
+
+.speak-btn:active {
+  transform: scale(.88);
+}
+
+.speak-btn.speaking {
+  background: linear-gradient(145deg, #5b3a50, #7d5a6e);
+  border-color: transparent;
+  color: #fff;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 #5b3a5044; }
+  50% { box-shadow: 0 0 0 7px #5b3a5000; }
+}
+
+/* DESAIN HP SANAPUZESHA */
+@media (min-width: 601px) {
+  body {
+    min-height: 100vh;
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d8e5d4;
+  }
+
+  .app {
+    width: 320px;
+    height: calc(100vh - 32px);
+    min-height: 0;
+    padding-bottom: 85px;
+    margin: 0 auto;
+    border: 8px solid #252823;
+    border-radius: 42px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 0 2px #c9dccb, 0 20px 45px #5b3a5025;
+    scrollbar-width: none;
+  }
+
+  .app::-webkit-scrollbar {
+    display: none;
+  }
+
+  .app::before {
+    content: "";
+    position: absolute;
+    z-index: 30;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 19px;
+    border-radius: 20px;
+    background: #171916;
+    pointer-events: none;
+  }
+
+  .topbar {
+    padding-top: 34px;
+  }
+
+  .daily-card {
+    min-height: 0;
+    padding: 15px;
+  }
+
+  .daily-card .arabic {
+    font-size: 25px;
+    margin: 10px 0;
+  }
+
+  .card-heading {
+    margin-top: 16px;
+    font-size: 19px;
+  }
+
+  .translation {
+    font-size: 11px;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 64px;
+    margin: 0 auto 8px;
+  }
+}
+
+/* TAMPILAN HP ASLI */
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    background: var(--cream);
+  }
+
+  .app {
+    width: 320px;
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    margin: 0;
+    padding-bottom: 95px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .app::before {
+    display: none;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 408px;
+    margin: 0 auto;
+  }
+}
+
+/* SELURUH BERANDA MUAT DALAM SATU LAYAR */
+@media (min-width: 601px) {
+  .app {
+    height: min(780px, calc(100vh - 48px));
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 0px;
+  }
+
+  .page-content {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 90px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-content::-webkit-scrollbar {
+    display: none;
+  }
+
+  .app > .bottom-nav {
+    position: absolute;
+    z-index: 50;
+    bottom: 12px;
+    left: 50%;
+    right: auto;
+    width: calc(100% - 32px);
+    max-width: 408px;
+    height: 64px;
+    margin: 0;
+    transform: translateX(-50%);
+    flex-shrink: 0;
+  }
+
+  .topbar {
+    flex-shrink: 0;
+    padding: 24px 18px 10px;
+  }
+
+  .greeting {
+    flex-shrink: 0;
+    padding: 5px 20px 12px;
+  }
+
+  .greeting h1 {
+    font-size: 23px;
+  }
+
+  .greeting p {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  .mosque-banner {
+    flex-shrink: 0;
+    margin: 0 15px 12px;
+    padding: 8px 14px 2px;
+  }
+
+  .daily-card {
+    flex: 1;
+    min-height: 0;
+    margin: 0 15px 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-heading {
+    margin-top: 12px;
+    font-size: 18px;
+  }
+
+  .daily-card .arabic {
+    font-size: 25px;
+    margin: 8px 0;
+  }
+
+  .translation {
+    font-size: 11px;
+  }
+
+  .card-divider {
+    margin: 10px 0;
+  }
+
+  .section {
+    flex-shrink: 0;
+    margin-bottom: 12px;
+    padding: 0 15px;
+  }
+
+  .section-heading {
+    margin-bottom: 9px;
+  }
+
+  .section-heading h2 {
+    font-size: 18px;
+  }
+
+  .category-card {
+    min-height: 62px;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .category-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+  }
+
+  .category-name {
+    font-size: 10px;
+  }
+
+  .category-count {
+    font-size: 9px;
+  }
+
+  .bottom-nav {
+    flex-shrink: 0;
+    height: 68px;
+  }
+}
+
+/* IKON PREMIUM */
+.icon-svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.logo .icon-svg {
+  width: 29px;
+  height: 29px;
+  stroke: #f3eaf0;
+}
+
+.profile .icon-svg {
+  width: 20px;
+  height: 20px;
+  stroke: #5b3a50;
+}
+
+.nav-icon {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 23px;
+}
+
+.nav-icon .icon-svg {
+  width: 21px;
+  height: 21px;
+  stroke-width: 1.8;
+}
+
+.nav-item.active .nav-icon .icon-svg {
+  stroke-width: 2.15;
+}
+
+.category-icon .icon-svg {
+  width: 21px;
+  height: 21px;
+  stroke-width: 1.8;
+}
+
+.category-card:focus-visible,
+.nav-item:focus-visible,
+.profile:focus-visible {
+  outline: 2px solid #7d5a6e;
+  outline-offset: 3px;
+}
+
+.mosque-banner {
+  padding: 0;
+  min-height: 148px;
+}
+
+.mosque-banner .makkah-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+<main class="page-content">
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.5 3.5C16 5 15.2 7 15.2 9.2C15.2 13.5 18.5 17 22 17.5C20.5 20 17.8 21.5 14.8 21.5C9.8 21.5 5.8 17.5 5.8 12.5C5.8 7.8 9.5 4 14 3.5C15.2 3.3 16.4 3.3 17.5 3.5Z" fill="currentColor"/>
+        <path d="M18.5 7L19.2 8.7L21 9.2L19.5 10.3L19.7 12.2L18.2 11.1L16.5 11.8L17.2 10L16.1 8.5L18 8.7L18.5 7Z" fill="currentColor"/>
+      </svg>
+    </div>
+    
+    <div class="brand-text">
+      <div class="brand-name">SANAPUZESHA</div>
+      <div class="brand-subtitle">RUANG DOA HARIAN</div>
+    </div>
+  </div>
+
+  <button class="profile-button" onclick="openProfil()" aria-label="Profil">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="3.5"/>
+      <path d="M5 20c0-3.8 3.1-6.5 7-6.5s7 2.7 7 6.5"/>
+    </svg>
+  </button>
+</header>
+
+<section class="greeting">
+  <div class="date" id="today">ASSALAMUALAIKUM</div>
+  <h1>Semoga harimu<br><span>penuh berkah.</span></h1>
+  <p>Awali setiap langkah dengan mengingat Allah.</p>
+</section>
+
+<section class="mosque-banner" aria-label="Ilustrasi Masjidil Haram di Makkah">
+  <svg class="makkah-art" viewBox="0 0 400 170"
+       xmlns="http://www.w3.org/2000/svg"
+       role="img" aria-label="Ilustrasi Masjidil Haram dengan Ka'bah di tengah">
+    <defs>
+      <linearGradient id="skyMakkah" x1="0" y1="0" x2="0" y2="1">
+        <stop stop-color="#f8f4f7"/>
+        <stop offset="1" stop-color="#e8efe5"/>
+      </linearGradient>
+      <linearGradient id="kaabaGold" x1="0" y1="0" x2="1" y2="0">
+        <stop stop-color="#b99a62"/>
+        <stop offset=".5" stop-color="#e0c58a"/>
+        <stop offset="1" stop-color="#a98750"/>
+      </linearGradient>
+      <linearGradient id="kaabaBlack" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#3b3038"/>
+        <stop offset="1" stop-color="#211c22"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="400" height="170" rx="22" fill="url(#skyMakkah)"/>
+    <circle cx="326" cy="31" r="17" fill="#ffffff" opacity=".45"/>
+    <path d="M0 130 Q70 110 130 128 T260 126 T400 122 V170 H0Z" fill="#dce8d8"/>
+
+    <path d="M15 111V69h370v42" fill="none" stroke="#b9a5b3" stroke-width="8" stroke-linecap="round"/>
+    <path d="M22 109V77h356v32" fill="none" stroke="#fffafc" stroke-width="5"/>
+
+    <g fill="#8c6a80" opacity=".88">
+      <path d="M29 110V91a12 12 0 0 1 24 0v19Z"/>
+      <path d="M77 110V91a12 12 0 0 1 24 0v19Z"/>
+      <path d="M125 110V91a12 12 0 0 1 24 0v19Z"/>
+      <path d="M251 110V91a12 12 0 0 1 24 0v19Z"/>
+      <path d="M299 110V91a12 12 0 0 1 24 0v19Z"/>
+      <path d="M347 110V91a12 12 0 0 1 24 0v19Z"/>
+    </g>
+
+    <g fill="#fdfbfc" stroke="#9a7d91" stroke-width="1.5">
+      <path d="M48 76V34h10v42Z"/>
+      <path d="M43 35h20l-4-8H47Z"/>
+      <path d="M47 26 53 15l6 11Z"/>
+      <path d="M342 76V34h10v42Z"/>
+      <path d="M337 35h20l-4-8h-12Z"/>
+      <path d="M341 26 347 15l6 11Z"/>
+    </g>
+
+    <g fill="#b89aaf">
+      <circle cx="53" cy="21" r="2"/>
+      <circle cx="347" cy="21" r="2"/>
+    </g>
+
+    <ellipse cx="200" cy="143" rx="75" ry="10" fill="#c6d7c1"/>
+    <path d="M145 83 200 62 255 83 200 104Z" fill="#51414b"/>
+    <path d="M145 83 200 104v49l-55-18Z" fill="url(#kaabaBlack)"/>
+    <path d="M200 104 255 83v52l-55 18Z" fill="#30262e"/>
+    <path d="m145 95 55 20 55-20v8l-55 20-55-20Z" fill="url(#kaabaGold)"/>
+    <path d="M145 83 200 62 255 83l-55 21Z" fill="#40343d"/>
+    <path d="M160 88 200 73 240 88" fill="none" stroke="#d7bd83" stroke-width="2" opacity=".8"/>
+    <path d="M160 105v28M240 105v28" stroke="#9d8257" stroke-width="1" opacity=".45"/>
+    <path d="M192 128h16v25h-16Z" fill="#6d5965" opacity=".6"/>
+    <path d="M0 151 Q100 140 200 151 T400 150" fill="none" stroke="#fff" stroke-width="4" opacity=".75"/>
+  </svg>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>Jelajahi Doa</h2>
+    <button class="see-all" id="exploreButton">Lihat semua ↗</button>
+  </div>
+
+  <div class="category-grid">
+    <button class="category-card" data-filter="Doa Setelah Salat">
+      <div class="category-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.5 4.5a8.8 8.8 0 1 0 1 14.8A9.7 9.7 0 0 1 18.5 4.5Z"/>
+          <path d="m17.5 7 .9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3Z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="category-name">Setelah Salat</div>
+        <div class="category-count">zikir &amp; doa</div>
+      </div>
+    </button>
+
+    <button class="category-card" data-filter="Tidur">
+      <div class="category-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19.5 14.5A8.2 8.2 0 0 1 9.5 4.2a8.5 8.5 0 1 0 10 10.3Z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="category-name">Doa Istirahat</div>
+        <div class="category-count"></div>
+      </div>
+    </button>
+
+    <button class="category-card" data-filter="Aktivitas Harian">
+      <div class="category-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 12c-2-2-2-5 0-7 2 2 2 5 0 7Zm0 0c2-2 5-2 7 0-2 2-5 2-7 0Zm0 0c2 2 2 5 0 7-2-2-2-5 0-7Zm0 0c-2 2-5 2-7 0 2-2 5-2 7 0Z"/>
+          <circle cx="12" cy="12" r="1.4"/>
+        </svg>
+      </div>
+      <div>
+        <div class="category-name">Doa Harian</div>
+        <div class="category-count">Dalam aktivitas</div>
+      </div>
+    </button>
+
+    <button class="category-card" data-filter="Keluarga">
+      <div class="category-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.5 8.8c0 4.2-8.5 10-8.5 10s-8.5-5.8-8.5-10A4.4 4.4 0 0 1 12 6.2a4.4 4.4 0 0 1 8.5 2.6Z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="category-name">Doa Keluarga</div>
+        <div class="category-count">Untuk orang tercinta</div>
+      </div>
+    </button>
+  </div>
+</section>
+
+</main>
+
+
+<nav class="bottom-nav">
+  <button class="nav-item active" data-page="Home">
+    <span class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 10 9-7 9 7"/>
+        <path d="M5 9v12h14V9"/>
+        <path d="M9 21v-7h6v7"/>
+      </svg>
+    </span>
+    <span>Home</span>
+  </button>
+
+  <button class="nav-item" data-page="Explore">
+    <span class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="3" width="16" height="18" rx="3"/>
+        <path d="M8 8h8"/>
+        <path d="M8 12h8"/>
+        <path d="M8 16h5"/>
+      </svg>
+    </span>
+    <span>Explore</span>
+  </button>
+
+  <button class="nav-item" data-page="Zikir">
+    <span class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <circle cx="12" cy="12" r="5"/>
+        <circle cx="12" cy="12" r="1"/>
+      </svg>
+    </span>
+    <span>Zikir</span>
+  </button>
+
+  <button class="nav-item" data-page="Profil">
+    <span class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 21a8 8 0 0 1 16 0"/>
+      </svg>
+    </span>
+    <span>Profil</span>
+  </button>
+</nav>
+
+
+</div>
+
+<div class="notice" id="notice" role="status"></div>
+
+<script>
+const notice = document.getElementById("notice");
+let noticeTimeout;
+
+function showNotice(message) {
+  notice.textContent = message;
+  notice.classList.add("show");
+  clearTimeout(noticeTimeout);
+  noticeTimeout = setTimeout(() => {
+    notice.classList.remove("show");
+  }, 2200);
+}
+
+// Sapaan
+document.getElementById("today").textContent = "ASSALAMUALAIKUM";
+
+// Fitur suara
+function speakText(text, button) {
+  if (!("speechSynthesis" in window)) {
+    showNotice("Browser tidak mendukung fitur suara");
+    return;
+  }
+
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+    document.querySelectorAll(".speak-btn").forEach(btn => {
+      btn.classList.remove("speaking");
+    });
+  }
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "id-ID";
+  utterance.rate = 0.85;
+
+  if (button) {
+    button.classList.add("speaking");
+    utterance.onend = () => button.classList.remove("speaking");
+    utterance.onerror = () => button.classList.remove("speaking");
+  }
+
+  speechSynthesis.speak(utterance);
+}
+
+// Data doa
+const prayers = [
+  {
+    title:"Istighfar",
+    category:"Doa Setelah Salat",
+    arabic:"أَسْتَغْفِرُ اللهَ",
+    latin:"Astaghfirullah",
+    meaning:"Aku memohon ampun kepada Allah.",
+    count:"3 kali"
+  },
+  {
+    title:"doa Memohon Keselamatan",
+    category:"Doa Setelah Salat",
+    arabic:"اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يا ذَا الْجَلاَلِ وَالإِكْرَامِ",
+    latin:"Allahumma anta as-salamu wa minka as-salamu tabaarakta ya dhal-jalaali wal-ikraam",
+    meaning:"Ya Allah, Engkaulah sumber keselamatan, dan dari-Mu datang keselamatan. Maha Suci Engkau, wahai Tuhan yang memiliki keagungan dan kemuliaan."
+  },
+  {
+    title:"Doa Memohon Memohon Pertolongan Beribadan",
+    category:"Doa Setelah Salat",
+    arabic:"اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+    latin:"Allahumma a'inni 'ala dhikrika wa syukrika wa husni 'ibadatika",
+    meaning:"Ya Allah, bantulah aku untuk selalu mengingat-Mu, bersyukur kepada-Mu, dan beribadah dengan baik kepada-Mu."
+  },
+  {
+    title:"Doa Memohon Ampunan",
+    category:"Doa Setelah Salat",
+    arabic:"رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا",
+    latin:"Rabbana ighfir lana dzunoobana wa isroafana fi amrina",
+    meaning:"Ya Tuhan kami, ampunilah dosa-dosa kami dan kesalahan-kesalahan kami dalam urusan kami."
+  },
+  {
+    title:"Tasbih",
+    category:"Doa Setelah Salat",
+    arabic:"سُبْحَانَ اللهِ",
+    latin:"Subhanallah",
+    meaning:"Maha Suci Allah.",
+    count:"33 kali"
+  },
+  {
+    title:"Tahmid",
+    category:"Doa Setelah Salat",
+    arabic:"الْحَمْدُ لِلَّهِ",
+    latin:"Alhamdulillah",
+    meaning:"Segala puji bagi Allah.",
+    count:"33 kali"
+  },
+  {
+    title:"Takbir",
+    category:"Doa Setelah Salat",
+    arabic:"اللَّهُ أَكْبَرُ",
+    latin:"Allahu Akbar",
+    meaning:"Allah Maha Besar.",
+    count:"33 kali"
+  },
+  {
+    title:"Tahlil",
+    category:"Doa Setelah Salat",
+    arabic:"لَا إِلَهَ إِلَّا اللهُ",
+    latin:"La ilaha illallah",
+    meaning:"Tiada Tuhan selain Allah.",
+    count:"33 kali"
+  },
+  {
+    title:"Ayat Kursi",
+    category:"Doa Setelah Salat",
+    arabic:"اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ ما فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَم مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+    latin:"Allahu la ilaha illa huwa al-hayyul-qayyum la ta'khudhuhu sinatun wa la nawm lahu ma fis-samawati wa ma fil-ard man dhal-ladhi yashfa'u 'indahu illa bi-idhnihi ya'lamu ma bayna aydihim wa ma khalfahum wa la yuhituna bi shai'im-min 'ilmihi illa bima shaa wasi'a kursiyuhus-samawati wal-ard wa la ya'uduhu hifdhuhuma wa huwa al-aliyyul-azhim",
+    meaning:"Allah, tidak ada Tuhan selain Dia, Yang Maha Hidup, Yang terus-menerus mengurus (makhluk-Nya); tidak mengantuk dan tidak tidur. Kepunyaan-Nya apa yang di langit dan apa yang di bumi. Tiada yang dapat memberi syafaat di sisi-Nya tanpa izin-Nya. Dia mengetahui apa yang ada di hadapan mereka dan apa yang ada di belakang mereka, dan mereka tidak mengetahui apa-apa dari ilmu-Nya kecuali apa yang Dia kehendaki. Kursi-Nya meliputi langit dan bumi. Dan Dia tidak merasa berat memelihara keduanya, dan Dia Maha Tinggi, Maha Besar.",
+
+  },
+  {
+    title:"Doa Memohon Kebaikan Dunia dan Akhirat",
+    category:"Doa Setelah Salat",
+    arabic:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّار",
+    latin:"Rabbana atina fid-dunya hasanah wa fil-akhirati hasanah wa qina 'adhaban-nar",
+    meaning:"Ya Tuhan kami, berikanlah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari siksa neraka."
+  }
+];
+
+const doaIstirahat =[
+  {
+    title: "Doa Sebelum Tidur",
+    category: "Doa Istirahat",
+    arabic: "بِاسْمِكَ اللّهُمَّ أَمُوت وَأَحْيَا",
+    latin: "Bismika Allahumma amuutu wa ahyaa",
+    meaning: "Dengan nama-Mu ya Allah, aku mati dan aku hidup."
+  },
+
+  {
+    title: "Doa Bangun Tidur",
+    category: "Doa Istirahat",
+    arabic: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+    latin: "Alhamdulillahil-ladzi ahyana ba'da ma amatana wa ilaihin-nusyur",
+    meaning: "Segala puji bagi Allah yang telah menghidupkan kami setelah mematikan kami, dan kepada-Nya lah kami dikembalikan."
+  }
+];
+
+const doaHarian = [
+  {
+    title: "Doa Sebelum Makan",
+    category: "Doa Harian",
+    arabic: "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ",
+    latin: "Allahumma barik lana fima razaqtana wa qina 'adhaban-nar",
+    meaning: "Ya Allah, berkahilah kami dalam rezeki yang telah Engkau berikan kepada kami dan lindungilah kami dari siksa neraka."
+  },
+  {
+    title: "Doa Setelah Makan",
+    category: "Doa Harian",
+    arabic: "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+    latin: "Alhamdulillahil-ladzi ath'amana wa saqana wa ja'alana muslimin",
+    meaning: "Segala puji bagi Allah yang telah memberi makan kami dan minum kami, dan telah menjadikan kami orang-orang yang berserah diri."
+  },
+  {
+    title: "Doa Masuk Kamar Mandi",
+    category: "Doa Harian",
+    arabic: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
+    latin: "Allahumma inni a'udzu bika minal-khubutsi wal-khaba'its",
+    meaning: "Ya Allah, aku berlindung kepada-Mu dari godaan setan laki-laki dan setan perempuan."  
+  },
+  {
+    title: "Doa Keluar Kamar Mandi",
+    category: "Doa Harian",
+    arabic: "غُفْرَانَكَ",
+    latin: "Ghufranaka",
+    meaning: "Aku memohon ampunan-Mu."
+  },
+  {
+    title: " Doa Masuk Rumah",
+    category: "Doa Harian",
+    arabic: "بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا",
+    latin: "Bismillahi walajna wa bismillahi kharajna wa 'ala Allahi rabbina tawakkalna",
+    meaning: "Dengan nama Allah kami masuk, dan dengan nama Allah kami keluar, dan kepada Allah Tuhan kami kami bertawakkal."
+  },
+  {
+    title: "Doa Keluar Rumah",
+    category: "Doa Harian",
+    arabic: "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    latin: "Bismillahi tawakkaltu 'ala Allahi wa la hawla wa la quwwata illa billah",
+    meaning: "Dengan nama Allah aku bertawakkal kepada Allah, dan tidak ada daya dan kekuatan kecuali dengan pertolongan Allah."
+  },
+  {
+    title: "Doa Memohon Ilmu",
+    category: "Doa Harian",
+    arabic: "رَبِّ زِدْنِي عِلْمًا",
+    latin: "Rabbi zidni ilma",
+    meaning: "Ya Tuhanku, tambahkanlah kepadaku ilmu pengetahuan."
+  },
+  {
+    title: "Doa Memohon Kebaikan",
+    category: "Doa Harian",
+    arabic: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+    latin: "Rabbana atina fid-dunya hasanah wa fil-akhirati hasanah wa qina 'adhaban-nar",
+    meaning: "Ya Tuhan kami, berikanlah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari siksa neraka."
+  },
+  {
+    title: "Doa Naik Kendaraan",
+    category: "Doa Harian",
+    arabic: "سُبْحَانَ الَّذِي سََخَّرَ لَنَا هَذَا وَمَا كُنَّا لهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+    latin: "Subhanalladzi sakhkhara lana hadza wa ma kunna lahu muqrinin wa inna ila rabbina lamunqalibun",
+    meaning: "Maha Suci Allah yang telah menundukkan ini untuk kami, dan kami sebelumnya tidak mampu menguasainya, dan sesungguhnya kami akan kembali kepada Tuhan kami." 
+  },
+  {
+    title: "Doa Turun Kendaraan",
+    category: "Doa Harian",
+    arabic: "الْحَمْدُ لِلَّهِ الَّذِي أَذْهَبَ عَنِّي الْأَذَى وَعَافَانِي",
+    latin: "Alhamdulillahil-ladzi adh-haba 'anni al-adza wa 'afani",
+    meaning: "Segala puji bagi Allah yang telah menghilangkan dariku bahaya dan menyelamatkanku."
+  },
+  {
+    title: "Doa Memohon Ampunan",
+    category: "Doa Harian",
+    arabic: "أَسْتَغْفِرُ اللهَ",
+    latin: "Astaghfirullah",
+    meaning: "Aku memohon ampun kepada Allah."  
+  }
+];
+
+const doaKeluarga = [
+  {
+    title: "Doa Untuk Orang Tua",
+    category: "Doa Keluarga",
+    arabic: "رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+    latin: "Rabbi ighfir li wa liwalidayya warhamhuma kama rabbayani saghira",
+    meaning: "Ya Tuhanku, ampunilah aku dan kedua orang tuaku, dan rahmatilah mereka sebagaimana mereka telah mendidikku ketika aku masih kecil."
+  },
+  {
+    title: "Doa Memohon Kebaikan untuk Keluarga",
+    category: "Doa Keluarga",
+    arabic: "رَبَّنَا هَبْ لَنَا مِنْ أزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+    latin: "Rabbana hablana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lil-muttaqina imama",
+    meaning: "Ya Tuhan kami, anugerahkanlah kepada kami pasangan dan keturunan yang menjadi penyejuk mata, dan jadikanlah kami sebagai pemimpin bagi orang-orang yang bertakwa."
+  },
+  {
+    title: "Doa Untuk Keluarga Agar Selalu Dilindungi",
+    category: "Doa Keluarga",
+    arabic: "أُعِيذُكُمْ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ",
+    latin: "U'idhukum bikalimatillahit-tammati min kulli shaytanin wa hammah wa min kulli 'aynin lammah",
+    meaning: "Aku berlindung kepada kalian dengan kalimat-kalimat Allah yang sempurna dari setiap setan dan binatang buas, dan dari setiap mata yang jahat."
+  },
+  {
+    title: "Doa Memohon Ampunan untuk Keluarga",
+    category: "Doa Keluarga",
+    arabic: "رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمرِنَا وَثَبِّتْ أَقْدَامَنَا وَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",     
+    latin: "Rabbana ighfir lana dhunubana wa isrāfana fi amrina wa thabbit aqdamana wa insurnā 'ala al-qawmi al-kāfirīn",
+    meaning: "Ya Tuhan kami, ampunilah dosa-dosa kami dan kelebihan kami dalam urusan kami, dan teguhkan langkah-langkah kami dan bantu kami melawan kaum kafir."
+  },
+  {
+    title: "Doa untuk Kesehatan Keluarga",
+    category: "Doa Keluarga",
+    arabic: "رَبَّنَا اغْفِرْ لَنَا وَلِأَهْلِنَا وَارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+    latin: "Rabbana ighfir lana wa li-ahlina wa arhamhuma kama rabbayani saghira",
+    meaning: "Ya Tuhan kami, ampunilah kami dan keluarga kami, dan rahmatilah mereka sebagaimana mereka telah mendidikku ketika aku masih kecil."
+  },
+  {
+    title: "Doa Agar Diberi Kerberkahan",
+    category: "Doa Keluarga",
+    arabic: "اللَّهُمَّ بَارِكْ لَنَا فِي أَهْلِنَا وَارْزُقْنَا الْمَوَدَّةَ وَالرَّحْمَةَ",
+    latin: "Allahumma bārikk lana fī ahlina wa arzuqnā al-mawaddata wa al-rahmah",
+    meaning: "Ya Tuhan kami, anugerahkan keberkahan kepada kami di keluarga kami dan berikanlah cinta dan kasih sayang kepada kami."
+  }
+];
+
+// Render daftar doa
+function renderPrayerList(list, container) {
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="prayer">
+        <p style="text-align:center;color:#9a8296">
+          Doa tidak ditemukan.
+        </p>
+      </div>`;
+    return;
+  }
+
+  list.forEach((prayer, index) => {
+    const card = document.createElement("article");
+    card.className = "prayer";
+
+    card.innerHTML = `
+      <div class="prayer-top">
+        <div class="number">${index + 1}</div>
+        <div>
+          <h3>${prayer.title}</h3>
+          <span class="tag">${prayer.category}</span>
+        </div>
+      </div>
+
+      <button class="speak-btn" aria-label="Bacakan doa">♫</button>
+
+      <div class="arabic" lang="ar" dir="rtl">${prayer.arabic}</div>
+
+      <p class="latin">${prayer.latin}</p>
+
+      <div class="meaning">
+        <strong>Artinya</strong>
+        ${prayer.meaning}
+      </div>
+
+      <div class="doa-count">
+        <span class="count-icon">✦</span>
+        dibaca ${prayer.count || "1 kali"}
+      </div>
+    `;
+
+    card.querySelector(".speak-btn").addEventListener("click", event => {
+      speakText(prayer.latin + ". Artinya: " + prayer.meaning, event.currentTarget);
+    });
+
+    container.appendChild(card);
+  });
+}
+
+// Navigasi halaman
+const pageContent = document.querySelector(".page-content");
+const homeMarkup = pageContent.innerHTML;
+
+function navMarkup(activePage) {
+  const pages = [
+    ["Home", `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 10 9-7 9 7"/>
+        <path d="M5 9v12h14V9"/>
+        <path d="M9 21v-7h6v7"/>
+      </svg>
+    `],
+
+    ["Explore", `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="3" width="16" height="18" rx="3"/>
+        <path d="M8 8h8"/>
+        <path d="M8 12h8"/>
+        <path d="M8 16h5"/>
+      </svg>
+    `],
+
+    ["Zikir", `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <circle cx="12" cy="12" r="5"/>
+        <circle cx="12" cy="12" r="1"/>
+      </svg>
+    `],
+
+    ["Profil", `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 21a8 8 0 0 1 16 0"/>
+      </svg>
+    `]
+  ];
+
+  return `
+    <nav class="bottom-nav">
+      ${pages.map(([name, icon]) => `
+        <button class="nav-item ${activePage === name ? "active" : ""}" data-page="${name}">
+          <span class="nav-icon">${icon}</span>
+          <span>${name}</span>
+        </button>
+      `).join("")}
+    </nav>
+  `;
+}
+
+function setupNavigation(activePage = "Home") {
+  const navItems = document.querySelectorAll(".nav-item");
+
+  navItems.forEach(button => {
+    button.classList.remove("active");
+      button.classList.toggle(
+        "active",
+        button.dataset.page === activePage
+      );
+        button.onclick = () => {
+      const page = button.dataset.page;
+
+      if (page === "Home") openHome();
+      if (page === "Explore") openExplore();
+      if (page === "Zikir") openZikir();
+      if (page === "Profil") openProfil();
+    };
+  });
+}
+
+function openHome() {
+  pageContent.innerHTML = homeMarkup;
+  setupHomeButtons();
+  setupNavigation("Home");
+}
+
+function setupHomeButtons() {
+  const profile = document.getElementById("profileButton");
+  if (profile) profile.addEventListener("click", openProfil);
+
+  const explore = document.getElementById("exploreButton");
+  if (explore) explore.addEventListener("click", openExplore);
+
+  document.querySelectorAll(".category-card").forEach(button => {
+    button.addEventListener("click", () => {
+      openExplore(button.dataset.filter);
+    });
+  });
+}
+
+function openExplore(filter = "") {
+  pageContent.innerHTML = `
+    <header class="topbar">
+      <div class="brand">
+        <button class="back-button" onclick="openHome()" aria-label="Kembali ke Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"/>
+            <path d="m12 19-7-7 7-7"/>
+          </svg>
+        </button>
+      <div>
+        <div class="brand-name">Jelajahi Doa</div>
+        <div class="brand-subtitle">KOLEKSI DOA HARIAN</div>
+      </div>
+    </div>
+  </header>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Temukan Doamu</h2>
+      </div>
+
+      <input id="exploreSearch"
+        type="search"
+        placeholder="Cari doa..."
+        value="${filter}"
+        style="width:100%;padding:14px;border:1px solid #d5e3d1;border-radius:16px;background:white;color:#5b3a50;margin-bottom:16px;outline:none;">
+
+      <div id="exploreList"></div>
+    </section>
+  `;
+
+  renderExplore();
+  setupNavigation("Explore");
+
+  document.getElementById("exploreSearch").addEventListener("input", renderExplore);
+}
+
+function renderExplore() {
+  const search = document.getElementById("exploreSearch");
+  const query = search.value.toLowerCase();
+
+  const filtered = prayers.filter(prayer =>
+    prayer.title.toLowerCase().includes(query) ||
+    prayer.category.toLowerCase().includes(query) ||
+    prayer.meaning.toLowerCase().includes(query)
+  );
+
+  renderPrayerList(filtered, document.getElementById("exploreList"));
+}
+
+
+function openProfil() {
+  pageContent.innerHTML = `
+    <header class="topbar">
+      <div class="brand">
+        <button class="back-button" onclick="openHome()" aria-label="Kembali ke Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"/>
+            <path d="m12 19-7-7 7-7"/>
+          </svg>
+        </button>
+      <div>
+        <div class="brand-name">Profil</div>
+        <div class="brand-subtitle">SANAPUZESHA</div>
+      </div>
+    </div>
+  </header>
+
+    <section class="section profile-page">
+
+      <div class="profile-hero">
+        <div class="profile-logo">☾</div>
+
+        <div class="profile-name">SANAPUZESHA</div>
+
+        <div class="profile-tagline">
+          Ruang Doa Harian
+        </div>
+
+        <p class="profile-description">
+          Teman sederhana untuk menemani ibadah,
+          menenangkan hati, dan mengingat Allah
+          dalam setiap langkah.
+        </p>
+      </div>
+
+      <div class="profile-section-title">
+        Mengenal Aplikasi
+      </div>
+
+      <div class="profile-menu">
+
+        <div class="profile-menu-item">
+          <div class="profile-menu-icon">✦</div>
+          <div class="profile-menu-content">
+            <h3>Tentang SANAPUZESHA</h3>
+            <p>
+              Aplikasi doa harian yang dirancang
+              untuk membantu membaca doa,
+              memahami makna, dan berzikir.
+            </p>
+          </div>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="profile-menu-icon">◈</div>
+          <div class="profile-menu-content">
+            <h3>Kumpulan Doa</h3>
+            <p>
+              Berbagai doa harian yang dapat
+              ditemukan dan dibaca dengan mudah.
+            </p>
+          </div>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="profile-menu-icon">◎</div>
+          <div class="profile-menu-content">
+            <h3>Digital Tasbih</h3>
+            <p>
+              Fitur penghitung zikir dengan
+              pilihan hitungan yang dapat disesuaikan.
+            </p>
+          </div>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="profile-menu-icon">♫</div>
+          <div class="profile-menu-content">
+            <h3>Bacaan Suara</h3>
+            <p>
+              Membantu mendengarkan bacaan
+              doa melalui fitur suara.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="profile-footer">
+        <div class="profile-footer-name">SANAPUZESHA</div>
+        <p>Semoga setiap doa membawa ketenangan.</p>
+        <span>Ruang Doa Harian</span>
+      </div>
+
+    </section>
+  `;
+
+  setupNavigation("Profil");
+}
+
+
+function openZikir() {
+  const daftarZikir = [
+    {
+      id: "istighfar",
+      nama: "Istighfar",
+      arab: "أَسْتَغْفِرُ اللَّهَ",
+      arti: "Aku memohon ampun kepada Allah."
+    },
+    {
+      id: "tasbih",
+      nama: "Tasbih",
+      arab: "سُبْحَانَ اللَّهِ",
+      arti: "Maha Suci Allah."
+    },
+    {
+      id: "tahmid",
+      nama: "Tahmid",
+      arab: "الْحَمْدُ لِلَّهِ",
+      arti: "Segala puji bagi Allah."
+    },
+    {
+      id: "takbir",
+      nama: "Takbir",
+      arab: "اللَّهُ أَكْبَرُ",
+      arti: "Allah Maha Besar."
+    },
+    {
+      id: "tahlil",
+      nama: "Tahlil",
+      arab: "لَا إِلَٰهَ إِلَّا اللَّهُ",
+      arti: "Tiada Tuhan selain Allah."
+    }
+  ];
+
+  let selected = daftarZikir[0];
+
+  pageContent.innerHTML = `
+    <header class="topbar">
+      <div class="brand">
+        <button class="back-button" onclick="openHome()" aria-label="Kembali ke Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"/>
+            <path d="m12 19-7-7 7-7"/>
+          </svg>
+        </button>
+        <div>
+          <div class="brand-name">Zikir</div>
+          <div class="brand-subtitle">HITUNGAN ZIKIR HARIAN</div>
+      </div>
+    </div>
+  </header>
+
+    <section class="section">
+
+      <div class="section-heading">
+        <h2>Pilih Zikir</h2>
+      </div>
+
+      <div class="zikir-options">
+        ${daftarZikir.map(z => `
+          <button class="zikir-choice ${z.id === selected.id ? "active" : ""}"
+            data-zikir="${z.id}">
+            <span class="zikir-choice-name">${z.nama}</span>
+            <span class="zikir-choice-arab" lang="ar" dir="rtl">${z.arab}</span>
+            <span class="zikir-choice-meaning">${z.arti}</span>
+          </button>
+        `).join("")}
+      </div>
+
+      <div class="daily-card" style="text-align:center">
+
+        <div class="card-label">DIGITAL TASBIH</div>
+
+        <h2 id="zikirTitle" class="card-heading">
+          ${selected.nama}
+        </h2>
+
+        <div id="zikirArabic" class="zikir-main-arab" lang="ar" dir="rtl">
+          ${selected.arab}
+        </div>
+
+        <p id="zikirMeaning" class="translation">
+          ${selected.arti}
+        </p>
+
+        <div id="tasbihCount"
+          style="font-family:'Cormorant Garamond';font-size:65px;font-weight:600;margin:18px 0;color:#5b3a50">
+          0
+        </div>
+
+        <p id="tasbihTarget" class="translation">33 kali</p>
+        <p id="tasbihInfo" class="translation">0 dari 33 kali</p>
+
+        <div style="height:7px;background:#e3efe0;border-radius:10px;margin:20px 0;overflow:hidden">
+          <div id="tasbihProgress" style="height:100%;width:0;background:#7d5a6e;transition:.2s"></div>
+        </div>
+
+        <div style="display:flex;gap:8px;justify-content:center;margin-bottom:20px">
+          <button class="action" data-target="33">33</button>
+          <button class="action" data-target="99">99</button>
+          <button class="action" data-target="100">100</button>
+        </div>
+
+        <button id="tasbihTap"
+          style="width:150px;height:150px;border-radius:50%;border:7px solid #e3efe0;background:linear-gradient(145deg,#5b3a50,#7d5a6e);color:white;font-weight:600;letter-spacing:2px;box-shadow:0 10px 25px #5b3a5030">
+          ZIKIR
+        </button>
+
+        <div style="margin-top:20px">
+          <button id="tasbihReset" class="see-all">
+            ↻ Ulangi hitungan
+          </button>
+        </div>
+
+      </div>
+    </section>
+  `;
+
+  let count = 0;
+  let target = 33;
+
+  const countText = document.getElementById("tasbihCount");
+  const targetText = document.getElementById("tasbihTarget");
+  const infoText = document.getElementById("tasbihInfo");
+  const progress = document.getElementById("tasbihProgress");
+  const tapButton = document.getElementById("tasbihTap");
+
+  function loadZikir() {
+    try {
+      count = Number(localStorage.getItem("zikirCount_" + selected.id)) || 0;
+      target = Number(localStorage.getItem("zikirTarget_" + selected.id)) || 33;
+    } catch (error) {
+      count = 0;
+      target = 33;
+    }
+
+    if (![33, 99, 100].includes(target)) target = 33;
+
+    updateTasbih();
+  }
+
+  function updateTasbih() {
+    countText.textContent = count;
+    targetText.textContent = target + " kali";
+    infoText.textContent = count + " dari " + target + " kali";
+
+    progress.style.width = Math.min((count / target) * 100, 100) + "%";
+
+    document.querySelectorAll("[data-target]").forEach(button => {
+      button.classList.toggle(
+        "active",
+        Number(button.dataset.target) === target
+      );
+    });
+
+    tapButton.textContent = count >= target ? "SELESAI ✓" : "ZIKIR";
+
+    try {
+      localStorage.setItem("zikirCount_" + selected.id, count);
+      localStorage.setItem("zikirTarget_" + selected.id, target);
+    } catch (error) {}
+  }
+
+  document.querySelectorAll(".zikir-choice").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.zikir;
+      selected = daftarZikir.find(z => z.id === id);
+
+      document.getElementById("zikirTitle").textContent = selected.nama;
+      document.getElementById("zikirArabic").textContent = selected.arab;
+      document.getElementById("zikirMeaning").textContent = selected.arti;
+
+      document.querySelectorAll(".zikir-choice").forEach(item => {
+        item.classList.toggle(
+          "active",
+          item.dataset.zikir === selected.id
+        );
+      });
+
+      loadZikir();
+    });
+  });
+
+  document.querySelectorAll("[data-target]").forEach(button => {
+    button.addEventListener("click", () => {
+      target = Number(button.dataset.target);
+      updateTasbih();
+    });
+  });
+
+  tapButton.addEventListener("click", () => {
+    if (count >= target) {
+      showNotice("Jumlah bacaan tercapai, Masya Allah!");
+      return;
+    }
+
+    count++;
+    updateTasbih();
+
+    if (count === target) {
+      showNotice("Jumlah bacaan tercapai, Masya Allah!");
+    }
+  });
+
+  document.getElementById("tasbihReset").addEventListener("click", () => {
+    count = 0;
+    updateTasbih();
+    showNotice("Hitungan berhasil diulang");
+  });
+
+  loadZikir();
+  setupNavigation("Zikir");
+}
+
+
+// Tombol navigasi
+setupHomeButtons();
+setupNavigation();
+</script>
+
+</body>
+</html>
